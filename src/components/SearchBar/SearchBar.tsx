@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useEffect, useMemo, useState,
 } from 'react';
 import { Box } from '@mui/material';
 import TextField, {} from '@mui/material/TextField';
@@ -17,7 +17,7 @@ export const SearchBar: React.FC<Props> = function ({
   fetchData,
   searchByColumns,
 }) {
-  const [status, setStatus] = useState<string>('Todos');
+  const [status, setStatus] = useState<string>('-1');
   const [searchCriteria, setSearchCriteria] = useState<string>('');
 
   const handleSelectChange = (event: { target: { value: React.SetStateAction<string> } }) => {
@@ -33,13 +33,13 @@ export const SearchBar: React.FC<Props> = function ({
     searchByColumns.map((row) => arr.push(`{"${row}":{"$regex":".${searchCriteria}*"}}`));
 
     switch (true) {
-      case searchCriteria !== '' && status === 'Todos': {
+      case searchCriteria !== '' && status === '-1': {
         return `{"$or":${arr}`;
       }
-      case searchCriteria !== '' && status !== 'Todos': {
+      case searchCriteria !== '' && status !== '-1': {
         return `{"$and":[{'Activo':'${status === '1'}'},{"$or":${arr}]}`;
       }
-      case searchCriteria === '' && status !== 'Todos': {
+      case searchCriteria === '' && status !== '-1': {
         return `{"Activo":${status === '1'}}`;
       }
       default: {
@@ -49,7 +49,7 @@ export const SearchBar: React.FC<Props> = function ({
   }, [searchByColumns, searchCriteria, status]);
 
   useEffect(() => {
-    const q = queryFactory || '';
+    const q = queryFactory;
     fetchData(q);
   }, [status, fetchData, queryFactory]);
 
@@ -78,7 +78,7 @@ export const SearchBar: React.FC<Props> = function ({
             onChange={handleSelectChange}
             defaultValue={status}
           >
-            <MenuItem value="Todos">Todos</MenuItem>
+            <MenuItem value="-1">Todos</MenuItem>
             <MenuItem value="1">Activos</MenuItem>
             <MenuItem value="0">Inactivos</MenuItem>
           </Select>

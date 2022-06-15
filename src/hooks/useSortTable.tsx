@@ -45,7 +45,7 @@ export function useSortTable({
 
       setPaginatedData(paginatedData);
     }
-  }, [JSON.stringify(orderBy), commerces, setPaginatedData, currentPage]);
+  }, [JSON.stringify(orderBy), commerces, setPaginatedData, currentPage, pageSize]);
 
   return {
     orderBy,
