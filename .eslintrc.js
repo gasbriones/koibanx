@@ -27,6 +27,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'react/function-component-definition': 'off',
         'react/require-default-props': 'off',
-        'react-hooks/exhaustive-deps': 'off'
+        'react-hooks/exhaustive-deps': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off'
     }
 };
