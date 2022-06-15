@@ -7,6 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { ACTIVE, ALL } from "../../constants/constants";
 
 type Props = {
   fetchData: (criteria: string) => void;
@@ -33,14 +34,14 @@ export const SearchBar: React.FC<Props> = function ({
     searchByColumns.map((row) => arr.push(`{"${row}":{"$regex":".${searchCriteria}*"}}`));
 
     switch (true) {
-      case searchCriteria !== '' && status === '-1': {
+      case searchCriteria !== '' && status === ALL: {
         return `{"$or":${arr}`;
       }
-      case searchCriteria !== '' && status !== '-1': {
-        return `{"$and":[{'Activo':'${status === '1'}'},{"$or":${arr}]}`;
+      case searchCriteria !== '' && status !== ALL: {
+        return `{"$and":[{'Activo':'${status === ACTIVE}'},{"$or":${arr}]}`;
       }
-      case searchCriteria === '' && status !== '-1': {
-        return `{"Activo":${status === '1'}}`;
+      case searchCriteria === '' && status !== ALL: {
+        return `{"Activo":${status === ACTIVE}}`;
       }
       default: {
         return '';

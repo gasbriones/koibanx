@@ -3,8 +3,7 @@ import React, {
 } from 'react';
 import { mockData } from '../moks/MOCK_DATA';
 import { CommerceType, PaginationDataType } from '../types/types';
-
-const BASE_URL = 'https://api.koibanx.com/stores';
+import { BASE_URL } from "../constants/constants";
 
 type Props = {
   children: React.ReactNode
