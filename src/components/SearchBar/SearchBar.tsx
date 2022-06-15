@@ -18,7 +18,7 @@ export const SearchBar: React.FC<Props> = function ({
   fetchData,
   searchByColumns,
 }) {
-  const [status, setStatus] = useState<string>('-1');
+  const [status, setStatus] = useState<string>(ALL);
   const [searchCriteria, setSearchCriteria] = useState<string>('');
 
   const handleSelectChange = (event: { target: { value: React.SetStateAction<string> } }) => {
