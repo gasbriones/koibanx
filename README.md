@@ -2,6 +2,12 @@
 #### `node version 14.19.2`
 #### `npm version 6.14.17`
 
+## Project Base
+- Type Script
+- Material UI
+- React Router Dom
+- Eslint
+
 ## Available Scripts
 
 In the project directory, you can run:
