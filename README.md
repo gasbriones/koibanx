@@ -12,8 +12,8 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Resources
-GIT Repository: [https://github.com/gasbriones/backbone](https://github.com/gasbriones/backbone) \
-Online Project: [https://github.com/gasbriones/backbone](https://github.com/gasbriones/backbone)
+GIT Repository: [https://github.com/gasbriones/koibanx](https://github.com/gasbriones/koibanx) \
+Online Project: [https://github.com/gasbriones/koibanx](https://github.com/gasbriones/koibanx)
 
 
 
