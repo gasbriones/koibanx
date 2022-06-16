@@ -7,7 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { ACTIVE, ALL } from '../../constants/constants';
+import { ACTIVE, ALL, INACTIVE } from '../../constants/constants';
 
 type Props = {
   fetchData: (criteria: string) => void;
@@ -79,9 +79,9 @@ export const SearchBar: React.FC<Props> = function ({
             onChange={handleSelectChange}
             defaultValue={status}
           >
-            <MenuItem value="-1">Todos</MenuItem>
-            <MenuItem value="1">Activos</MenuItem>
-            <MenuItem value="0">Inactivos</MenuItem>
+            <MenuItem value={ALL}>Todos</MenuItem>
+            <MenuItem value={ACTIVE}>Activos</MenuItem>
+            <MenuItem value={INACTIVE}>Inactivos</MenuItem>
           </Select>
         </FormControl>
       </Box>
