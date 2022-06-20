@@ -7,6 +7,7 @@ import Layout from '../layout/Layout';
 import useData from '../providers/useData';
 import { useSortTable, usePaginationTable } from '../hooks';
 import { CommerceType } from '../types/types';
+import { SEARCH_BY, SORT_COLUMNS } from "../constants/constants";
 
 const useStyles = makeStyles((theme) => ({
   contactsContainer: {
@@ -19,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home(): JSX.Element {
-  const sortColumns = ['Comercio', 'CUIT'];
-  const searchByColumns = ['ID', 'CUIT', 'Comercio'];
   const classes = useStyles();
   const { data, paginationData, fetchData } = useData();
   const [paginatedData, setPaginatedData] = useState<CommerceType[]>(data);
@@ -48,13 +47,13 @@ function Home(): JSX.Element {
   return (
     <Layout>
       <Box className={classes.contactsContainer}>
-        <SearchBar fetchData={fetchData} searchByColumns={searchByColumns} />
+        <SearchBar fetchData={fetchData} searchByColumns={SEARCH_BY} />
         <DataTable
           orderBy={orderBy}
           setOrderBy={setOrderBy}
           commerces={paginatedData}
           columnNames={columnNames}
-          sortColumns={sortColumns}
+          sortColumns={SORT_COLUMNS}
         />
         <Pagination pages={pages} currentPage={currentPage} handlePaginate={handlePaginate} />
       </Box>
