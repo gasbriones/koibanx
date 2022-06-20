@@ -28,6 +28,8 @@ module.exports = {
         'react/function-component-definition': 'off',
         'react/require-default-props': 'off',
         'react-hooks/exhaustive-deps': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off'
+        '@typescript-eslint/no-unsafe-return': 'off',
+        'react/no-array-index-key': 'off',
+        'max-len': 'off'
     }
 };

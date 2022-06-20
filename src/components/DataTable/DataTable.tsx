@@ -9,6 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { CommerceType, OrderByType } from '../../types/types';
+import {
+  ASC, DESC, YES, NO,
+} from '../../constants/constants';
 
 type Props = {
   commerces: CommerceType[];
@@ -37,8 +40,12 @@ export const DataTable: React.FC<Props> = function ({
                       sortColumns && sortColumns.includes(name) ? (
                         <TableSortLabel
                           active={orderBy.columnName === name}
-                          direction={orderBy.columnName === name ? orderBy.direction : 'asc'}
-                          onClick={() => setOrderBy((prevState) => ({ columnName: name, direction: prevState.direction === 'asc' ? 'desc' : 'asc' }))}
+                          direction={orderBy.columnName === name ? orderBy.direction : ASC}
+                          onClick={() => setOrderBy(
+                            (prevState) => (
+                              { columnName: name, direction: prevState.direction === ASC ? DESC : ASC }
+                            ),
+                          )}
                         >
                           {name}
                         </TableSortLabel>
@@ -54,20 +61,17 @@ export const DataTable: React.FC<Props> = function ({
                 key={commerce.ID}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {commerce.ID}
-                </TableCell>
-                <TableCell align="left">{commerce.Comercio}</TableCell>
-                <TableCell align="left">{commerce.CUIT}</TableCell>
-                <TableCell align="center">{commerce['Concepto 1']}</TableCell>
-                <TableCell align="center">{commerce['Concepto 2']}</TableCell>
-                <TableCell align="center">{commerce['Concepto 3']}</TableCell>
-                <TableCell align="center">{commerce['Concepto 4']}</TableCell>
-                <TableCell align="center">{commerce['Concepto 5']}</TableCell>
-                <TableCell align="center">{commerce['Concepto 6']}</TableCell>
-                <TableCell align="center">{commerce['Balance actual']}</TableCell>
-                <TableCell align="center">{commerce.Activo ? 'Si' : 'No'}</TableCell>
-                <TableCell align="right">{commerce['Ultima venta']}</TableCell>
+                {columnNames.map((name, index) => (
+                  <TableCell key={index}>
+                    {(() => {
+                      const key = name as keyof typeof commerce;
+                      if (key === 'Activo') {
+                        return (commerce[key] ? YES : NO).toUpperCase();
+                      }
+                      return commerce[key];
+                    })()}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
