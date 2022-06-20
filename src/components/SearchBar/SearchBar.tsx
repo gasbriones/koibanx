@@ -50,8 +50,7 @@ export const SearchBar: React.FC<Props> = function ({
   }, [searchByColumns, searchCriteria, status]);
 
   useEffect(() => {
-    const q = queryFactory;
-    fetchData(q);
+    fetchData(queryFactory);
   }, [status, fetchData, queryFactory]);
 
   return (

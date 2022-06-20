@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import _ from 'lodash';
 import { CommerceType, OrderByType } from '../types/types';
-import { ASC } from "../constants/constants";
+import { ASC } from '../constants/constants';
 
 type Props = {
   commerces: CommerceType[];
