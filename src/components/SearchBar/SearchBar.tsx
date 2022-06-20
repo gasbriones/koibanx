@@ -51,7 +51,7 @@ export const SearchBar: React.FC<Props> = function ({
 
   useEffect(() => {
     fetchData(queryFactory);
-  }, [status, fetchData, queryFactory]);
+  }, [fetchData, queryFactory]);
 
   return (
     <Box
