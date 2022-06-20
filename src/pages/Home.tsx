@@ -7,7 +7,7 @@ import Layout from '../layout/Layout';
 import useData from '../providers/useData';
 import { useSortTable, usePaginationTable } from '../hooks';
 import { CommerceType } from '../types/types';
-import { SEARCH_BY, SORT_COLUMNS } from "../constants/constants";
+import { SEARCH_BY, SORT_COLUMNS } from '../constants/constants';
 
 const useStyles = makeStyles((theme) => ({
   contactsContainer: {
